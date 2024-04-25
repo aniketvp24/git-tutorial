@@ -13,27 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5.1.0
-      with:
-        python-version: 3.10.11  # Change this to your Python version if needed
-
-    - name: Install system dependencies
+    - name: Set up Python and system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+        sudo apt-get install -y python3 python3-pip make build-essential libssl-dev zlib1g-dev \
           libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
           libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
           libffi-dev liblzma-dev
 
-    - name: Re-install Python
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade setuptools
-        python3 -m pip install --upgrade wheel
-        python3 -m pip install --force-reinstall python
-        python3 -m pip install --force-reinstall pip
-        
     - name: Install Python dependencies
       run: |
         pip install scikit-surprise  # If you have any other dependencies, specify them here or use requirements.txt
