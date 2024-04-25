@@ -21,5 +21,5 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r scikit-surprise  # If you have any dependencies, specify them in requirements.txt
+        pip install scikit-surprise  # If you have any dependencies, specify them in requirements.txt
         
