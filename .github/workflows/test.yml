@@ -7,19 +7,21 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5.1.0
-      with:
-        python-version: 3.10.11  # Change this to your Python version if needed
-
-    - name: Install dependencies
+    - name: Set up Python and system dependencies
       run: |
-        pip install Cython<3
-        pip install scikit-surprise  # If you have any dependencies, specify them in requirements.txt
-        
+        sudo apt-get update
+        sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+          libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+          libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+          libffi-dev liblzma-dev
+        python3 -m pip install --upgrade pip setuptools wheel python
+
+    - name: Install Python dependencies
+      run: |
+        pip install scikit-surprise  # If you have any other dependencies, specify them here or use requirements.txt
