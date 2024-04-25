@@ -20,8 +20,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get install -y build-essential python3.10-dev
-        pip install --upgrade pip
-        pip install Cython<3
-        pip install --use-pep517 scikit-surprise  # If you have any dependencies, specify them in requirements.txt
+        pip install Cython --install-option="--no-cython-compile"
+        pip install scikit-surprise  # If you have any dependencies, specify them in requirements.txt
         
