@@ -20,6 +20,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install Cython --install-option="--no-cython-compile"
+        pip install Cython<3
         pip install scikit-surprise  # If you have any dependencies, specify them in requirements.txt
         
