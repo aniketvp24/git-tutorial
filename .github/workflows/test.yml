@@ -1,0 +1,25 @@
+name: GitHub Actions Test
+
+on:
+  push:
+    branches:
+      - master  # branch name
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v5.1.0
+      with:
+        python-version: 3.10.11  # Change this to your Python version if needed
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r scikit-surprise  # If you have any dependencies, specify them in requirements.txt
+        
